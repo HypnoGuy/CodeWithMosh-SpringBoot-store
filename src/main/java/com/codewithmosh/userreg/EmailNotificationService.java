@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class EmailNotificationService implements NotificationService {
     @Override
     public void send(String message, String recipientEmail) {
-        System.out.println("Pretenting to send message = " + message + " to recipientEmail = " + recipientEmail);
+        System.out.println("Pretending to send message '" + message + "' to recipient '" + recipientEmail + "'");
     }
 }
