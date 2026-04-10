@@ -14,6 +14,10 @@ public class UserService {
     }
 
     public void RegisterUser(User user) {
+
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new IllegalArgumentException("User already exists");
+        }
         userRepository.save(user);
         notificationService.send("You are registered " + user.getName() , user.getEmail());
     }

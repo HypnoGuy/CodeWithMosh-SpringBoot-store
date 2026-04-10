@@ -1,9 +1,16 @@
 spring:
   application:
     name: store
+  datasource:
+    url: jdbc:mysql://mysql1:3306/store?createDatabaseIfNotExist=true
+    username: dba
+    password: 12m0nk3y5!
 stripe:
   apiUrl: https://api.stripe.com
   enabled: true
   timeout: 1000
   supported-currencies: USD,EUR,GBP
 payment-gateway: paypal
+email-server:
+  host: smtp.steve-baxter.co.uk
+  port: 587
