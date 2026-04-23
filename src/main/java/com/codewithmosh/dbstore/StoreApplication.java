@@ -1,8 +1,6 @@
 package com.codewithmosh.dbstore;
 
-import com.codewithmosh.dbstore.entities.Address;
-import com.codewithmosh.dbstore.entities.Tag;
-import com.codewithmosh.dbstore.entities.User;
+import com.codewithmosh.dbstore.entities.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -17,11 +15,17 @@ public class StoreApplication {
             .email("steve@example.com")
             .build();
 
-        var tag = new Tag("tag1");
-        user.getTags().add(tag);
-        tag.getUsers().add(user);
+        var category = Category.builder()
+            .name("Food")
+            .build();
 
-        System.out.println(user);
+        var product = Product.builder()
+            .name("Pizza")
+            .price(11.45)
+            .category(category)
+            .build();
+
+        System.out.println(product);
     }
 
 }
