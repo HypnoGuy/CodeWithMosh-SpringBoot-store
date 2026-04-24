@@ -3,35 +3,26 @@ package com.codewithmosh.dbstore.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Getter
 @Setter
 @Entity
 @Table(name = "categories")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Byte id;
 
     @Column(name = "name")
     private String name;
 
-    @ToString.Exclude
-    @Builder.Default
     @OneToMany(mappedBy = "category")
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products = new LinkedHashSet<>();
 
-    public void addProduct(Product product) {
-        products.add(product);
-        product.setCategory(this);
-    }
 
 }

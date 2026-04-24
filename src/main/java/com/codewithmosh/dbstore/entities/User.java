@@ -66,4 +66,17 @@ public class User {
         tag.getUsers().remove(this);
     }
 
+    @ManyToMany
+    @JoinTable(
+            name = "wishlist",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+
+    public Set<Product> wishlist = new HashSet<>();
+
+    public void addWishlist(Product product) {
+        this.wishlist.add(product);
+        product.getWishlist().add(this);
+    }
 }
